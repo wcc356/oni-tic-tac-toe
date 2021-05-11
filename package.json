@@ -21,6 +21,7 @@
 		"typescript": "^4.2.4"
 	},
 	"dependencies": {
+		"enums": "^1.0.3",
 		"phaser": "^3.50.1"
 	},
 	"parcelCleanPaths": [
