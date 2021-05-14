@@ -21,7 +21,6 @@ export default class Chess extends Phaser.GameObjects.Image {
                 break
         }
 
-        this.image.setDepth
         // drag config
         this.scene.input.setDraggable(this.image)
         this.scene.input.on('dragstart', function (pointer, gameObject) {
@@ -34,6 +33,16 @@ export default class Chess extends Phaser.GameObjects.Image {
         this.scene.input.on('dragend', function (pointer, gameObject) {
             gameObject.setDepth(0)
         }, this.scene);
+
+        //drop config
+        this.scene.input.on('drop', function (pointer, gameObject, dropZone) {
+
+            gameObject.x = dropZone.x;
+            gameObject.y = dropZone.y;
+
+            gameObject.input.enabled = true;
+
+        });
     }
 }
 
