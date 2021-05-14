@@ -1,10 +1,10 @@
 export enum ChessTexture {
-    LargeRed = 'large-red',
-    MediumRed = 'medium-red',
-    SmallRed = 'small-red',
-    LargeBlue = 'large-blue',
-    MediumBlue = 'medium-blue',
-    SmallBlue = 'small-blue'
+    LargeRed = 'Large-Red',
+    MediumRed = 'Medium-Red',
+    SmallRed = 'Small-Red',
+    LargeBlue = 'Large-Blue',
+    MediumBlue = 'Medium-Blue',
+    SmallBlue = 'Small-Blue'
 }
 
 export enum CastleTexture {
@@ -20,12 +20,14 @@ export enum CastleTexture {
 }
 
 export enum ChessSize {
-    Small = 'Small',
-    Medium = 'Medium',
-    Large = 'Large'
+    Small,
+    Medium,
+    Large
 }
 
 export enum ChessTeam {
-    Red = 'Red',
-    Blue = 'Blue'
+    Red,
+    Blue,
+    None
 }
+

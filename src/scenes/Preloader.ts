@@ -22,7 +22,7 @@ export default class Preloader extends Phaser.Scene {
         this.load.image(ChessTexture.MediumRed, 'chess/mediumRed.png')
         this.load.image(ChessTexture.SmallRed, 'chess/smallRed.png')
         this.load.image(ChessTexture.LargeBlue, 'chess/largeBlue.png')
-        this.load.image(ChessTexture.MediumBlue, 'chess/mediumRed.png')
+        this.load.image(ChessTexture.MediumBlue, 'chess/mediumBlue.png')
         this.load.image(ChessTexture.SmallBlue, 'chess/smallBlue.png')
     }
 
