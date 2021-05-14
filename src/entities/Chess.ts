@@ -1,13 +1,39 @@
 import Phaser from 'phaser'
-import { ChessKeys } from './Enums'
+import { ChessTexture, ChessSize, ChessTeam } from './Enums'
 
-enum ChessState {
-    Movable,
-    Stunned
+export default class Chess extends Phaser.GameObjects.Image {
+    private image: Phaser.GameObjects.Image
+
+    constructor(scene: Phaser.Scene, x: number, y: number, size: ChessSize, team: ChessTeam) {
+        const texture = `${size}${team}`
+        super(scene, x, y, ChessTexture[texture])
+        this.scene = scene
+        this.image = this.scene.add.image(x, y, ChessTexture[texture]).setInteractive();
+        switch (size) {
+            case ChessSize.Large:
+                this.image.setDisplaySize(100, 100)
+                break
+            case ChessSize.Medium:
+                this.image.setDisplaySize(80, 80)
+                break
+            case ChessSize.Small:
+                this.image.setDisplaySize(60, 60)
+                break
+        }
+
+        this.image.setDepth
+        // drag config
+        this.scene.input.setDraggable(this.image)
+        this.scene.input.on('dragstart', function (pointer, gameObject) {
+            gameObject.setDepth(1)
+        }, this.scene);
+        this.scene.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+            gameObject.x = dragX
+            gameObject.y = dragY
+        });
+        this.scene.input.on('dragend', function (pointer, gameObject) {
+            gameObject.setDepth(0)
+        }, this.scene);
+    }
 }
 
-export class Chess extends Phaser.GameObjects.Image {
-    constructor(scene: Phaser.Scene, x: number, y: number, size, team)
-
-
-}

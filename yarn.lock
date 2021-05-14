@@ -323,6 +323,11 @@ enquirer@^2.3.5:
   dependencies:
     ansi-colors "^4.1.1"
 
+entities@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/entities/-/entities-2.2.0.tgz#098dc90ebb83d8dffa089d55256b351d34c4da55"
+  integrity sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==
+
 enums@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/enums/-/enums-1.0.3.tgz#8f159231cbc256bfbdd677cf532a99c2b00e5a37"
@@ -800,7 +805,7 @@ path@0.12.7, path@^0.12.7:
     process "^0.11.1"
     util "^0.10.3"
 
-phaser@^3.50.1:
+phaser@^3.54.0:
   version "3.54.0"
   resolved "https://registry.yarnpkg.com/phaser/-/phaser-3.54.0.tgz#46b191e46059aab2a9a57f78525c60b595767eee"
   integrity sha512-/1XVI6J2siS0OGwJez7vLbRjars1zb//EvJdYMVyd3wNTUf5DHrvYUj1f6TsEISr4vjnbrNtS66QIuPbGU8x6A==

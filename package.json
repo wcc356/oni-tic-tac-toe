@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "not just tic-toc-toe",
 	"scripts": {
-		"dev": "parcel src/index.html -p 8000",
+		"dev": "parcel src/index.html -p 8001",
 		"build": "parcel build src/index.html --out-dir dist",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "eslint ./src --ext .js,.jsx,.ts,.tsx"
@@ -21,8 +21,9 @@
 		"typescript": "^4.2.4"
 	},
 	"dependencies": {
+		"entities": "^2.2.0",
 		"enums": "^1.0.3",
-		"phaser": "^3.50.1"
+		"phaser": "^3.54.0"
 	},
 	"parcelCleanPaths": [
 		"dist"

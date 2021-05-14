@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
-import { LargeRed } from '~/entities/Chess'
-import { CastleKeys, ChessKeys } from '../entities/Enums'
+import Chess from '~/entities/Chess'
+import { CastleTexture, ChessTexture, ChessSize, ChessTeam } from '~/entities/Enums'
 
 export default class Game extends Phaser.Scene {
     constructor() {
@@ -12,6 +12,8 @@ export default class Game extends Phaser.Scene {
     }
 
     create() {
+        const largeBlue1 = new Chess(this, 100, 100, ChessSize.Large, ChessTeam.Blue)
+        const mediumRed1 = new Chess(this, 100, 200, ChessSize.Medium, ChessTeam.Red)
         this.addChess()
         this.addZone()
     }
@@ -29,7 +31,7 @@ export default class Game extends Phaser.Scene {
         const graphics: Phaser.GameObjects.Graphics = new Array
         for (let i = 0; i < 9; i++) {
             zone[i] = this.add.zone(zonePosition.x, zonePosition.y, lengthOfSquare, lengthOfSquare);
-            this.add.image(zonePosition.x, zonePosition.y, CastleKeys[`Castle${i + 1}`]).setDisplaySize(lengthOfSquare, lengthOfSquare)
+            this.add.image(zonePosition.x, zonePosition.y, CastleTexture[`Castle${i}`]).setDisplaySize(lengthOfSquare, lengthOfSquare)
             // Just a visual display of the drop zone
             graphics[i] = this.add.graphics().lineStyle(2, 0xffff00)
             graphics[i].strokeRect(zone[i].x - lengthOfSquare / 2, zone[i].y - lengthOfSquare / 2, lengthOfSquare, lengthOfSquare)
@@ -46,17 +48,12 @@ export default class Game extends Phaser.Scene {
 
 
     private addChess() {
-        const largeRed = this.add.image(100, 100, ChessKeys.LargeRed).setDisplaySize(100, 100)
+        // const largeRed = this.add.image(100, 100, ChessTexture.LargeBlue).setDisplaySize(100, 100)
         // this.makeChessDragabke(largeRed)
     }
 
     // privete makeChessDragabke(chess) {
-    //     chess.setInteractive()
-    //     this.input.setDraggable(chess)
-    //     this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
-    //         gameObject.x = dragX
-    //         gameObject.y = dragY
-    //     })
+    //     
 
     //     this.input.on('dragenter', function (pointer, gameObject, dropZone) {
     //         graphics.clear();
