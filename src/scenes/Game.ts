@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import Castle from '~/entities/Castle'
 import Chess from '~/entities/Chess'
 import { CastleTexture, ChessTexture, ChessSize, ChessTeam } from '~/entities/Enums'
 
@@ -15,28 +16,24 @@ export default class Game extends Phaser.Scene {
         const largeBlue1 = new Chess(this, 100, 100, ChessSize.Large, ChessTeam.Blue)
         const mediumRed1 = new Chess(this, 100, 200, ChessSize.Medium, ChessTeam.Red)
         this.addChess()
-        this.addZone()
+        this.addCastle()
     }
 
 
-    private addZone() {
-        // set draggable zone
+    private addCastle() {
         const width: number = this.scale.width
         const height: number = this.scale.height
-        const lengthOfSquare = 120
+        const squareSide = 120
         const margin: = 10
-        let zonePosition = { x: width / 2 - margin - lengthOfSquare, y: height / 2 - margin - lengthOfSquare }
-
-        const zone: Phaser.GameObjects.Zone = new Array
-        const graphics: Phaser.GameObjects.Graphics = new Array
+        let firstPosition = { x: width / 2 - margin - squareSide, y: height / 2 - margin - squareSide }
+        // castle[0] castle[1] castle[2]
+        // castle[3] castle[4] castle[5]
+        // castle[6] castle[7] castle[8]
+        let castle = new Array
         for (let i = 0; i < 9; i++) {
-            zone[i] = this.add.zone(zonePosition.x, zonePosition.y, lengthOfSquare, lengthOfSquare);
-            this.add.image(zonePosition.x, zonePosition.y, CastleTexture[`Castle${i}`]).setDisplaySize(lengthOfSquare, lengthOfSquare)
-            // Just a visual display of the drop zone
-            graphics[i] = this.add.graphics().lineStyle(2, 0xffff00)
-            graphics[i].strokeRect(zone[i].x - lengthOfSquare / 2, zone[i].y - lengthOfSquare / 2, lengthOfSquare, lengthOfSquare)
-            zonePosition.x += (margin + lengthOfSquare)
-            if (i % 3 === 2) { zonePosition.x -= 3 * (margin + lengthOfSquare); zonePosition.y += (margin + lengthOfSquare) }
+            castle[i] = new Castle(this, firstPosition.x, firstPosition.y, squareSide, CastleTexture[`Castle${i}`])
+            firstPosition.x += (margin + squareSide)
+            if (i % 3 === 2) { firstPosition.x -= 3 * (margin + squareSide); firstPosition.y += (margin + squareSide) }
         }
     }
 
