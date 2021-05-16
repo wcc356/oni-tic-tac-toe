@@ -1,69 +1,62 @@
 import Phaser from 'phaser'
 import Castle from '~/entities/Castle'
 import Chess from '~/entities/Chess'
+import test from '~/entities/Castle'
 import { CastleTexture, ChessTexture, ChessSize, ChessTeam } from '~/entities/Enums'
 
 export default class Game extends Phaser.Scene {
+    private chess!: Phaser.Physics.Arcade.Group
+
     constructor() {
         super('game')
     }
 
     create() {
-        this.addChess()
-        this.addCastle()
+        this.createChess()
+        this.createCastle()
     }
 
-    private addCastle() {
+    private createCastle() {
         const width: number = this.scale.width
         const height: number = this.scale.height
         const squareSide = 120
         const margin = 10
-        const firstPosition = { x: width / 2 - margin - squareSide, y: height / 2 - margin - squareSide }
-        // castle[0] castle[1] castle[2]
-        // castle[3] castle[4] castle[5]
-        // castle[6] castle[7] castle[8]
-        let castle = new Array
+        const originPoint = { x: width / 2 - margin - squareSide, y: height / 2 - margin - squareSide }
+
+        // castles[0] castles[1] castles[2]
+        // castles[3] castles[4] castles[5]
+        // castles[6] castles[7] castles[8]
+        this.castles = new Array
         for (let i = 0; i < 9; i++) {
-            castle[i] = new Castle(this, firstPosition.x, firstPosition.y, squareSide, CastleTexture[`Castle${i}`])
-            firstPosition.x += (margin + squareSide)
-            if (i % 3 === 2) { firstPosition.x -= 3 * (margin + squareSide); firstPosition.y += (margin + squareSide) }
+            this.castles.push(new Castle(this, originPoint.x, originPoint.y, squareSide, CastleTexture[`Castle${i}`]))
+            originPoint.x += (margin + squareSide)
+            if (i % 3 === 2) { originPoint.x -= 3 * (margin + squareSide); originPoint.y += (margin + squareSide) }
         }
     }
 
-    private addChess() {
-        // create chess
-        let x = 65
-        let y = 70
+    private createChess() {
+        // create redChess
+        let [x, y] = [65, 70]
+        let chessgroup = new Array
         for (let i = 0; i < 2; i++) {
-            for (let j = 0; j < 2; j++) {
-                for (let k = 2; k >= 0; k--) {
-                    const texture = ChessSize[k] + ChessTeam[i]
-                    new Chess(this, x, y, ChessTexture[texture])
-                    y += (100 - (2 - k) * 15)
-                }
-                x += 100
-                y = 70
+            for (let j = 2; j >= 0; j--) {
+                chessgroup.push(new Chess(this, x, y, ChessTexture[ChessSize[j] + ChessTeam[0]]))
+                y += (100 - (2 - j) * 15) //micro adjust prettier
             }
-            x += this.scale.width / 2
+            [x, y] = [x + 100, 70]
         }
-
-        //
-
-
-
-
-
-
-
-
-
-        // new Chess(this, x, y, ChessTexture.LargeBlue)
-        // new Chess(this, 200, 100, ChessTexture.LargeBlue)
-        // new Chess(this, 100, 200, ChessTexture.MediumBlue)
-        // new Chess(this, 200, 200, ChessTexture.MediumBlue)
-        // new Chess(this, 100, 300, ChessTexture.SmallBlue)
-        // new Chess(this, 200, 300, ChessTexture.SmallBlue)
+        // create blueChess
+        x += this.scale.width / 2
+        for (let i = 0; i < 2; i++) {
+            for (let j = 2; j >= 0; j--) {
+                chessgroup.push(new Chess(this, x, y, ChessTexture[ChessSize[j] + ChessTeam[1]]))
+                y += (100 - (2 - j) * 15) //micro adjust prettier
+            }
+            [x, y] = [x + 100, 70]
+        }
     }
+
+
 }
 
 

@@ -24,7 +24,8 @@
 	"dependencies": {
 		"entities": "^2.2.0",
 		"enums": "^1.0.3",
-		"phaser": "^3.54.0"
+		"phaser": "^3.54.0",
+		"phaser3-rex-plugins": "^1.1.47"
 	},
 	"parcelCleanPaths": [
 		"dist"
