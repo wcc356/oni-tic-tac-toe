@@ -10,14 +10,18 @@ export default class Castle extends Phaser.GameObjects.Image {
     constructor(scene: Phaser.Scene, x: number, y: number, squareSide: number, castleTexture: CastleTexture) {
         super(scene, x, y, castleTexture)
         this.setDisplaySize(squareSide, squareSide)
+        //  make the squaare be the dropzone
         this.setInteractive()
-
-        this.input.dropZone = true;
-        this.owner: ChessTeam.None;
-        this.size = -1;
+        this.input.dropZone = true
 
         // default background = white
         this.background = this.scene.add.rectangle(x, y, squareSide, squareSide, 0xffffff)
+
+        // make chess array and the first one is the owner
+        this.sizeArr = [ChessSize.None]
+        this.teamArr = [ChessTeam.None]
+        this.owner = this.teamArr[0]
+        this.size = this.sizeArr[0]
 
         scene.add.existing(this)
     }
@@ -27,9 +31,16 @@ export default class Castle extends Phaser.GameObjects.Image {
         return this.owner
     }
     private set owner(team: ChessTeam) {
-        this.background.fillColor = team === ChessTeam.Red ? 0xff7983 : 0x7878ff
+        switch (team) {
+            case ChessTeam.Red:
+                this.background.fillColor = 0xff7983
+                break;
+            case ChessTeam.Blue:
+                this.background.fillColor = 0x7878ff
+                break
+            case ChessTeam.None:
+                this.background.fillColor = 0xffffff
+                break
+        }
     }
-
-
-
 }

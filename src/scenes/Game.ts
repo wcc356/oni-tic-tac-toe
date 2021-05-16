@@ -39,7 +39,7 @@ export default class Game extends Phaser.Scene {
         let [x, y] = [65, 70]
         let chessgroup = new Array
         for (let i = 0; i < 2; i++) {
-            for (let j = 2; j >= 0; j--) {
+            for (let j = 3; j > 0; j--) {
                 chessgroup.push(new Chess(this, x, y, ChessTexture[ChessSize[j] + ChessTeam[0]]))
                 y += (100 - (2 - j) * 15) //micro adjust prettier
             }
@@ -48,7 +48,7 @@ export default class Game extends Phaser.Scene {
         // create blueChess
         x += this.scale.width / 2
         for (let i = 0; i < 2; i++) {
-            for (let j = 2; j >= 0; j--) {
+            for (let j = 3; j > 0; j--) {
                 chessgroup.push(new Chess(this, x, y, ChessTexture[ChessSize[j] + ChessTeam[1]]))
                 y += (100 - (2 - j) * 15) //micro adjust prettier
             }

@@ -20,9 +20,10 @@ export enum CastleTexture {
 }
 
 export enum ChessSize {
+    None,
     Small,
     Medium,
-    Large
+    Large,
 }
 
 export enum ChessTeam {
