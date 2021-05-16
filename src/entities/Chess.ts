@@ -44,7 +44,7 @@ export default class Chess extends Phaser.GameObjects.Image {
         this.on('dragstart', (pointer, dragX, dragY) => {
             scene.children.bringToTop(this)
             this.setTint(
-                this.team === ChessTeam.Blue ? 0x7878ff : 0xF05654)
+                this.team === ChessTeam.Red ? 0xF05654 : 0x7878ff)
         })
         // drag 
         this.on('drag', (pointer, dragX, dragY) => {
@@ -55,7 +55,7 @@ export default class Chess extends Phaser.GameObjects.Image {
         // tint the castle
         this.on('dragenter', (pointer, target) => {
             target.setTint(
-                this.team === ChessTeam.Blue ? 0x7878ff : 0xF20c00)
+                this.team === ChessTeam.Red ? 0xF20c00 : 0x7878ff)
         }, scene)
 
         this.on('dragleave', (pointer, target) => {
@@ -66,10 +66,19 @@ export default class Chess extends Phaser.GameObjects.Image {
         this.on('drop', (pointer, target: Castle) => {
             this.x = target.x
             this.y = target.y
-            this.input.enabled = true
-            // change the castle owner
-            target.owner = this.team
             target.clearTint()
+            this.input.enabled = true
+            // check the strengh
+            if (this.size <= target.size) {
+                this.x = this.input.dragStartX
+                this.y = this.input.dragStartY
+                return
+            }
+            // change the castle owner and size
+            target.owner = this.team
+            target.size = this.size
+            //
+
         }, scene)
 
         // dropfailed back to start position, clearTint
@@ -80,6 +89,9 @@ export default class Chess extends Phaser.GameObjects.Image {
             }
             this.clearTint();
         }, scene)
+
+
+
 
         // chess is movable?
         switch (ChessState) {
