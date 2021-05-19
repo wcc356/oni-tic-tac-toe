@@ -1,3 +1,12 @@
+export enum SceneKeys {
+    Proloader = 'preloader',
+    Start = 'start',
+    Tutorial = 'tutorial',
+    Game = 'game',
+    End = 'end'
+}
+
+
 export enum ChessTexture {
     LargeRed = 'Large-Red',
     MediumRed = 'Medium-Red',

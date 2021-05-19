@@ -1,10 +1,10 @@
 import Phaser from 'phaser'
 
-import { CastleTexture, ChessTexture, ChessTexture } from '../entities/Enums'
+import { CastleTexture, ChessTexture, ChessTexture, SceneKeys } from '../entities/Enums'
 
 export default class Preloader extends Phaser.Scene {
     constructor() {
-        super('preloader')
+        super(SceneKeys.Proloader)
     }
 
     preload() {
@@ -13,7 +13,7 @@ export default class Preloader extends Phaser.Scene {
     }
 
     create() {
-        this.scene.start('game')
+        this.scene.start(SceneKeys.Start)
     }
 
     private loadChess() {

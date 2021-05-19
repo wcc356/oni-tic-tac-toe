@@ -2,11 +2,6 @@ import Phaser from 'phaser'
 import Castle from './Castle'
 import { ChessTexture, ChessSize, ChessTeam } from './Enums'
 
-enum ChessState {
-    movable,
-    immovable
-}
-
 export default class Chess extends Phaser.GameObjects.Image {
     private size: ChessSize
     private team: ChessTeam
@@ -46,7 +41,6 @@ export default class Chess extends Phaser.GameObjects.Image {
                 this.team === ChessTeam.Red ? 0xF05654 : 0x7878ff)
         })
 
-        // drag 
         this.on('drag', (pointer, dragX, dragY) => {
             this.x = dragX
             this.y = dragY
@@ -64,17 +58,21 @@ export default class Chess extends Phaser.GameObjects.Image {
 
         // drop to the dropzone center
         this.on('drop', (pointer, target: Castle) => {
+            // check drop possibility
+            // same position = back and cleartint
+            // less the size = back and cleartint 
+            if (this.castle === target || this.size <= target.size) {
+                this.x = this.input.dragStartX
+                this.y = this.input.dragStartY
+                target.clearTint()
+                this.clearTint()
+                return
+            }
+
             this.x = target.x
             this.y = target.y
             target.clearTint()
-            this.input.enabled = true
-            // compare the size
-            if (this.size <= target.size) {
-                this.x = this.input.dragStartX
-                this.y = this.input.dragStartY
-                return
-            }
-            // change user
+            this.clearTint()
 
             // upgrate old castle owner and size
             if (this.castle) {
@@ -91,26 +89,28 @@ export default class Chess extends Phaser.GameObjects.Image {
             target.sizeArr.unshift(this.size)
             target.size = target.sizeArr[0]
 
-        }, scene)
+            // change player
+            for (let chess of scene.chessGroup) {
+                chess.input.draggable = true;
+                chess.clearTint()
+                if (chess.team === this.team) {
+                    chess.input.draggable = false
+                    chess.setTint(0x999999)
+                }
+            }
+
+            scene.move += 1
+
+        })
 
         // dropfailed back to start position, clearTint
         this.on('dragend', (pointer, dragX, dragY, dropped) => {
             if (!dropped) {
                 this.x = this.input.dragStartX
                 this.y = this.input.dragStartY
-            }
-            this.clearTint();
-        }, scene)
-
-        // chess is movable?
-        switch (ChessState) {
-            case ChessState.movable:
-                this.image.setInteractive()
-                break
-            case ChessState.immovable:
-                this.image.disableInteractive()
-                break
-        }
+                this.clearTint();
+            }, scene)
+        this.clearTint()
 
         scene.add.existing(this)
     }

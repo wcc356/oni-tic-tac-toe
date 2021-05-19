@@ -2,6 +2,9 @@ import Phaser from 'phaser'
 
 import Preloader from './scenes/Preloader'
 import Game from './scenes/Game'
+import End from './scenes/End'
+import Start from './scenes/Start'
+import Tutorial from './scenes/Tutorial'
 
 
 const config: Phaser.Types.Core.GameConfig = {
@@ -16,7 +19,7 @@ const config: Phaser.Types.Core.GameConfig = {
 		}
 	},
 	backgroundColor: '51cc99'
-	scene: [Preloader, Game]
+	scene: [Preloader, Start, Tutorial, Game, End]
 }
 
 export default new Phaser.Game(config)
