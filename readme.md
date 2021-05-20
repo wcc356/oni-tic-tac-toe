@@ -16,7 +16,7 @@ Rules:
 
 未來預計會
 1. 新增那些日本古城的介紹，我不是亂選的==
-2. 會有規則的演示和小提示~~(垃圾話)~~
+2. 會有規則的演示和小提示
 3. 連線對戰
 
 credit: Andrew Ku, rexrainbow, anyone who helped me 
