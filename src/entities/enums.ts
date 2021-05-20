@@ -41,3 +41,7 @@ export enum ChessTeam {
     None
 }
 
+export enum TutorialTextureKeys {
+    Video = 'tutorial-video',
+    Image = 'tutorial-image'
+}

@@ -1,5 +1,5 @@
 import Phaser, { Scene } from 'phaser'
-import { SceneKeys } from '~/entities/Enums'
+import { ChessTexture, SceneKeys, TutorialTextureKeys, Video } from '~/entities/Enums'
 import Castle from '~/entities/Castle'
 import Chess from '~/entities/Chess'
 
@@ -9,32 +9,32 @@ export default class Tutorial extends Phaser.Scene {
     }
 
     create() {
-        console.log('tutorial')
-        this.createCastle()
+        const { width, height } = this.scale;
+
+        // large > mid > small
+        let image = this.add.image(width / 2, height / 10, TutorialTextureKeys.Image).setDisplaySize(width / 4, height / 4)
 
 
 
+
+        // tutorial video
+        let video = this.add.video(width / 2, height / 2 + 10, TutorialTextureKeys.Video).setDisplaySize(width * 2 / 3, height * 2 / 3)
+        video.play(true)
+        video.setLoop(true)
+        this.add.text(
+            width / 2, height * 9 / 10,
+            'This is tutorial,Click to start the game', {
+            fontSize: '28px',
+            color: '#000000',
+            shadow: { fill: true, blur: 0, offsetY: 0 },
+            padding: { left: 15, right: 15, top: 10, bottom: 10 }
+        })
+            .setOrigin(0.5)
 
         this.input.once('pointerdown', el => { this.scene.start(SceneKeys.Game) })
     }
 
-    private createCastle() {
-        const width!: number = this.scale.width
-        const height!: number = this.scale.height
-        const squareSide !: number = 120
-        const margin !: number = 10
-        const originPoint !: number = { x: width / 2 - margin - squareSide, y: height / 2 - margin - squareSide }
 
-        // castles[0] castles[1] castles[2]
-        // castles[3] castles[4] castles[5]
-        // castles[6] castles[7] castles[8]
-        this.castles = []
-        for (let i = 0; i < 9; i++) {
-            let x = originPoint.x + (i % 3) * (margin + squareSide)
-            let y = originPoint.y + Math.floor(i / 3) * (margin + squareSide)
-            this.castles.push(new Castle(this, x, y, squareSide, CastleTexture[`Castle${i}`]))
-        }
-    }
 
 
 

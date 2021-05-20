@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 
-import { CastleTexture, ChessTexture, ChessTexture, SceneKeys } from '../entities/Enums'
+import { CastleTexture, ChessTexture, ChessTexture, SceneKeys, TutorialTextureKeys } from '../entities/Enums'
 
 export default class Preloader extends Phaser.Scene {
     constructor() {
@@ -24,6 +24,8 @@ export default class Preloader extends Phaser.Scene {
         this.load.image(ChessTexture.LargeBlue, 'chess/largeBlue.png')
         this.load.image(ChessTexture.MediumBlue, 'chess/mediumBlue.png')
         this.load.image(ChessTexture.SmallBlue, 'chess/smallBlue.png')
+        this.load.image(TutorialTextureKeys.Image, 'tutorial/tutorial.png')
+        this.load.video(TutorialTextureKeys.Video, 'video/tutorial.mp4', 'loadeddata', false, true);
     }
 
     private loadCastle() {
