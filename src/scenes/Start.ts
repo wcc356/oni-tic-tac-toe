@@ -6,12 +6,9 @@ export default class Title extends Phaser.Scene {
         super(SceneKeys.Start)
     }
     create() {
-        console.log('start')
         const { width, height } = this.scale;
 
-
-
-
+        // text: ['Oni！', 'TicTocToe']
         this.add.text(
             width / 2, height * 0.4,
             ['Oni！', 'TicTocToe'],
@@ -25,6 +22,7 @@ export default class Title extends Phaser.Scene {
             })
             .setOrigin(0.5, 0.5);
 
+        // text:'Click to Start the game'
         const press = this.add.text(
             width / 2, height * 0.7,
             'Click to Start the game', {
@@ -38,9 +36,9 @@ export default class Title extends Phaser.Scene {
 
         this.flashElement(this, press);
         this.input.once('pointerdown', el => { this.scene.start(SceneKeys.Game) })
-
-
     }
+
+    // flash effect
     private flashElement(scene, element,
         repeat = true, easing = 'Linear',
         overallDuration = 1500, visiblePauseDuration = 500) {
@@ -81,10 +79,6 @@ export default class Title extends Phaser.Scene {
                     }
                 ]
             });
-
         }
-
     }
-
-
 }

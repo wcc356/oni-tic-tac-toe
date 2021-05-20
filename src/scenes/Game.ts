@@ -7,10 +7,13 @@ import { CastleTexture, ChessTexture, ChessSize, ChessTeam, SceneKeys } from '~/
 export default class Game extends Phaser.Scene {
     private chess!: Phaser.Physics.Arcade.Group
     private move: number
+    private noWinner: boolean
 
     constructor() {
         super('game')
         this.move = 0
+        this.noWinner = true
+
     }
 
     create() {
@@ -64,11 +67,9 @@ export default class Game extends Phaser.Scene {
     private winnerCondition() {
         this.checker = Array(9).fill(2)
         this.input.on('drop', (pointer, gameObject, target) => {
-            // // check winner
-            // console.log(this.castles[0].teamArr[0])
-            // //the target is which castle
-            // console.log(this.castles.indexOf(target))
-            // console.log(this.castles[0].teamArr[0])
+            // parameter target is castle, gameobj is current chess
+            // setting win condition
+            // red = 1, blue = -1, none = 0, if lineSum = 3 or -3 then win
 
             for (let castle of this.castles) {
                 let i = this.castles.indexOf(castle)
@@ -83,50 +84,52 @@ export default class Game extends Phaser.Scene {
                         this.checker[i] = -1
                         break
                 }
-
             }
 
-            //
-            //check winner(without current point obj)
+            //check winner(without current point obj) make curObj = 0
             let currentCastleIndex = this.castles.indexOf(target)
-            console.log(currentCastleIndex)
             let tmp = this.checker[currentCastleIndex]
             this.checker[currentCastleIndex] = 0
             this.check()
-            //check winner()
-            this.checker[currentCastleIndex] = tmp
-            this.check()
+            //check winner(with current obj) restore curObj 
+            if (this.noWinner) {
+                this.checker[currentCastleIndex] = tmp
+                this.check()
+            }
+
+
+
         }
     }
 
     private check() {
         //012
-        this.checkLine(0, 1, 2)
-        // //036
-        this.checkLine(0, 3, 6)
+        this.sumLine(0, 1, 2)
+        //036
+        this.sumLine(0, 3, 6)
         //048
-        this.checkLine(0, 4, 8)
+        this.sumLine(0, 4, 8)
         //147
-        this.checkLine(1, 4, 7)
+        this.sumLine(1, 4, 7)
         //246
-        this.checkLine(2, 4, 6)
+        this.sumLine(2, 4, 6)
         //258
-        this.checkLine(2, 5, 8)
+        this.sumLine(2, 5, 8)
         //345
-        this.checkLine(3, 4, 5)
+        this.sumLine(3, 4, 5)
         //678
-        this.checkLine(6, 7, 8)
+        this.sumLine(6, 7, 8)
     }
 
-    private checkLine(i, j, k) {
-        let [width, height] = [this.scale.width, this.scale.height]
+    // sum line then check win condition
+    private sumLine(i, j, k) {
         let result = this.checker[i] + this.checker[j] + this.checker[k]
         if (result === 3) {
-            this.add.rectangle(width / 2, height / 2, width, height, 0xffffff, 0.1)
-            this.scene.start(SceneKeys.End, { winner: 'red', move: this.move })
+            this.noWinner = false
+            this.scene.launch(SceneKeys.End, { winner: 'red', move: this.move })
         } else if (result === -3) {
-            this.add.rectangle(width / 2, height / 2, width, height, 0xffffff, 0.1)
-            this.scene.start(SceneKeys.End, { winner: 'red', move: this.move })
+            this.noWinner = false
+            this.scene.launch(SceneKeys.End, { winner: 'blue', move: this.move })
         }
     }
 }

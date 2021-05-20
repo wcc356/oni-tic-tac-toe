@@ -18,7 +18,9 @@ export default class End extends Phaser.Scene {
         const x = width * 0.5;
         const y = height * 0.5;
 
-        // this.add.rectangle(x, y, width, height, '#ffffff', 0.5);
+        this.add.rectangle(x, y, width, height, '#ffffff', 0.5);
+
+
 
         this.add.text(
             x, y - width / 20,
@@ -43,7 +45,10 @@ export default class End extends Phaser.Scene {
         })
             .setOrigin(0.5)
 
-        this.input.once('pointerdown', el => { this.scene.start(SceneKeys.Start) })
+        this.input.once('pointerdown', el => {
+            this.scene.stop(SceneKeys.Game)
+            this.scene.start(SceneKeys.Start)
+        })
 
     }
 
