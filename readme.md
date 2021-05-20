@@ -19,4 +19,4 @@ Rules:
 2. 會有規則的演示和小提示
 3. 連線對戰
 
-credit: Andrew Ku, rexrainbow, anyone who helped me 
+Credit: Andrew Ku, rexrainbow, anyone who helped me 
