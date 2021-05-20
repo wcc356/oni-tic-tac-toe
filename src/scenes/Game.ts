@@ -1,7 +1,6 @@
 import Phaser, { Scene } from 'phaser'
 import Castle from '~/entities/Castle'
 import Chess from '~/entities/Chess'
-import test from '~/entities/Castle'
 import { CastleTexture, ChessTexture, ChessSize, ChessTeam, SceneKeys } from '~/entities/Enums'
 
 export default class Game extends Phaser.Scene {
@@ -12,11 +11,10 @@ export default class Game extends Phaser.Scene {
     constructor() {
         super('game')
         this.move = 0
-        this.noWinner = true
-
     }
 
     create() {
+        this.move = 0
         this.createCastle()
         this.createChess()
         this.winnerCondition()
@@ -92,10 +90,10 @@ export default class Game extends Phaser.Scene {
             this.checker[currentCastleIndex] = 0
             this.check()
             //check winner(with current obj) restore curObj 
-            if (this.noWinner) {
-                this.checker[currentCastleIndex] = tmp
-                this.check()
-            }
+
+            this.checker[currentCastleIndex] = tmp
+            this.check()
+
 
 
 
