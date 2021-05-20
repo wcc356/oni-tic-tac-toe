@@ -25,7 +25,7 @@ export default class Preloader extends Phaser.Scene {
         this.load.image(ChessTexture.MediumBlue, 'chess/mediumBlue.png')
         this.load.image(ChessTexture.SmallBlue, 'chess/smallBlue.png')
         this.load.image(TutorialTextureKeys.Image, 'tutorial/tutorial.png')
-        this.load.video(TutorialTextureKeys.Video, 'video/tutorial.mp4', 'loadeddata', false, true);
+        this.load.video(TutorialTextureKeys.Video, 'tutorial/tutorial.mp4', 'loadeddata', false, true);
     }
 
     private loadCastle() {
