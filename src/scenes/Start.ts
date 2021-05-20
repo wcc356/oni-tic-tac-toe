@@ -37,9 +37,9 @@ export default class Title extends Phaser.Scene {
             .setOrigin(0.5);
 
         this.flashElement(this, press);
-        this.input.once('pointerdown', el => { this.scene.start(SceneKeys.Tutorial) })
+        this.input.once('pointerdown', el => { this.scene.start(SceneKeys.Game) })
 
-        // this.scene.start(SceneKeys.Game)
+
     }
     private flashElement(scene, element,
         repeat = true, easing = 'Linear',

@@ -22,7 +22,7 @@ export default class End extends Phaser.Scene {
 
         this.add.text(
             x, y - width / 20,
-            [`The Winner is ${ChessTeam[this.winner]} !`, `used ${this.move} steps`], {
+            [`The Winner is ${this.winner} !`, `used ${this.move} steps`], {
             fontFamily: 'Arial Black',
             fontSize: '48px',
             color: '#F8F0EE',

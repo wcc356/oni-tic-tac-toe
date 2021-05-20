@@ -76,9 +76,9 @@ export default class Chess extends Phaser.GameObjects.Image {
 
             // upgrate old castle owner and size
             if (this.castle) {
-                this.castle.teamArr.shift(this.team)
+                this.castle.teamArr.shift()
                 this.castle.owner = this.castle.teamArr[0]
-                this.castle.sizeArr.shift(this.size)
+                this.castle.sizeArr.shift()
                 this.castle.size = this.castle.sizeArr[0]
             }
 

@@ -1,0 +1,42 @@
+// //012
+    // if (this.castles[0].teamArr[0] === this.castles[1].teamArr[0] &&
+    //     this.castles[0].teamArr[0] === this.castles[2].teamArr[0] &&
+    //     this.castles[0].teamArr[0] !== ChessTeam.None) {
+    //     this.winner(gameObject.team)
+    // }
+    // // 036
+    // else if (this.castles[0].teamArr[0] === this.castles[3].teamArr[0] &&
+    //     this.castles[0].teamArr[0] === this.castles[6].teamArr[0] &&
+    //     this.castles[0].teamArr[0] !== ChessTeam.None) {
+    //     this.winner(gameObject.team)
+    // }//048
+    // else if (this.castles[0].teamArr[0] === this.castles[4].teamArr[0] &&
+    //     this.castles[0].teamArr[0] === this.castles[8].teamArr[0] &&
+    //     this.castles[0].teamArr[0] !== ChessTeam.None) {
+    //     this.winner(gameObject.team)
+    // }//147
+    // else if (this.castles[1].teamArr[0] === this.castles[4].teamArr[0] &&
+    //     this.castles[1].teamArr[0] === this.castles[7].teamArr[0] &&
+    //     this.castles[1].teamArr[0] !== ChessTeam.None) {
+    //     this.winner(gameObject.team)
+    // }//258
+    // else if (this.castles[2].teamArr[0] === this.castles[5].teamArr[0] &&
+    //     this.castles[2].teamArr[0] === this.castles[8].teamArr[0] &&
+    //     this.castles[2].teamArr[0] !== ChessTeam.None) {
+    //     this.winner(gameObject.team)
+    // }//246
+    // else if (this.castles[2].teamArr[0] === this.castles[4].teamArr[0] &&
+    //     this.castles[2].teamArr[0] === this.castles[6].teamArr[0] &&
+    //     this.castles[2].teamArr[0] !== ChessTeam.None) {
+    //     this.winner(gameObject.team)
+    // }//345
+    // else if (this.castles[3].teamArr[0] === this.castles[4].teamArr[0] &&
+    //     this.castles[3].teamArr[0] === this.castles[5].teamArr[0] &&
+    //     this.castles[3].teamArr[0] !== ChessTeam.None) {
+    //     this.winner(gameObject.team)
+    // }//678
+    // else if (this.castles[6].teamArr[0] === this.castles[7].teamArr[0] &&
+    //     this.castles[6].teamArr[0] === this.castles[8].teamArr[0] &&
+    //     this.castles[6].teamArr[0] !== ChessTeam.None) {
+    //     this.winner(gameObject.team)
+    // }

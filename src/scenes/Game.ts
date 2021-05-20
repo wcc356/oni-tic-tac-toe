@@ -16,7 +16,7 @@ export default class Game extends Phaser.Scene {
     create() {
         this.createCastle()
         this.createChess()
-        this.hasWinner()
+        this.winnerCondition()
     }
 
     private createCastle() {
@@ -61,62 +61,77 @@ export default class Game extends Phaser.Scene {
         }
     }
 
-    private hasWinner() {
+    private winnerCondition() {
+        this.checker = Array(9).fill(2)
         this.input.on('drop', (pointer, gameObject, target) => {
-            // check winner
+            // // check winner
+            // console.log(this.castles[0].teamArr[0])
+            // //the target is which castle
+            // console.log(this.castles.indexOf(target))
+            // console.log(this.castles[0].teamArr[0])
 
-            //012
-            if (this.castles[0].teamArr[0] === this.castles[1].teamArr[0] &&
-                this.castles[0].teamArr[0] === this.castles[2].teamArr[0] &&
-                this.castles[0].teamArr[0] !== ChessTeam.None) {
-                this.winner(gameObject.team)
+            for (let castle of this.castles) {
+                let i = this.castles.indexOf(castle)
+                switch (this.castles[i].teamArr[0]) {
+                    case ChessTeam.None:
+                        this.checker[i] = 0
+                        break
+                    case ChessTeam.Red:
+                        this.checker[i] = 1
+                        break
+                    case ChessTeam.Blue:
+                        this.checker[i] = -1
+                        break
+                }
+
             }
-            // 036
-            else if (this.castles[0].teamArr[0] === this.castles[3].teamArr[0] &&
-                this.castles[0].teamArr[0] === this.castles[6].teamArr[0] &&
-                this.castles[0].teamArr[0] !== ChessTeam.None) {
-                this.winner(gameObject.team)
-            }//048
-            else if (this.castles[0].teamArr[0] === this.castles[4].teamArr[0] &&
-                this.castles[0].teamArr[0] === this.castles[8].teamArr[0] &&
-                this.castles[0].teamArr[0] !== ChessTeam.None) {
-                this.winner(gameObject.team)
-            }//147
-            else if (this.castles[1].teamArr[0] === this.castles[4].teamArr[0] &&
-                this.castles[1].teamArr[0] === this.castles[7].teamArr[0] &&
-                this.castles[1].teamArr[0] !== ChessTeam.None) {
-                this.winner(gameObject.team)
-            }//258
-            else if (this.castles[2].teamArr[0] === this.castles[5].teamArr[0] &&
-                this.castles[2].teamArr[0] === this.castles[8].teamArr[0] &&
-                this.castles[2].teamArr[0] !== ChessTeam.None) {
-                this.winner(gameObject.team)
-            }//246
-            else if (this.castles[2].teamArr[0] === this.castles[4].teamArr[0] &&
-                this.castles[2].teamArr[0] === this.castles[6].teamArr[0] &&
-                this.castles[2].teamArr[0] !== ChessTeam.None) {
-                this.winner(gameObject.team)
-            }//345
-            else if (this.castles[3].teamArr[0] === this.castles[4].teamArr[0] &&
-                this.castles[3].teamArr[0] === this.castles[5].teamArr[0] &&
-                this.castles[3].teamArr[0] !== ChessTeam.None) {
-                this.winner(gameObject.team)
-            }//678
-            else if (this.castles[6].teamArr[0] === this.castles[7].teamArr[0] &&
-                this.castles[6].teamArr[0] === this.castles[8].teamArr[0] &&
-                this.castles[6].teamArr[0] !== ChessTeam.None) {
-                this.winner(gameObject.team)
-            }
+
+            //
+            //check winner(without current point obj)
+            let currentCastleIndex = this.castles.indexOf(target)
+            console.log(currentCastleIndex)
+            let tmp = this.checker[currentCastleIndex]
+            this.checker[currentCastleIndex] = 0
+            this.check()
+            //check winner()
+            this.checker[currentCastleIndex] = tmp
+            this.check()
         }
     }
-    private winner(winner) {
-        console.log(`${ChessTeam[winner]} is winner`)
-        for (let chess of this.chessGroup) {
-            chess.clearTint()
-        }
-        this.scene.start(SceneKeys.End, { winner: winner, move: this.move })
+
+    private check() {
+        //012
+        this.checkLine(0, 1, 2)
+        // //036
+        this.checkLine(0, 3, 6)
+        //048
+        this.checkLine(0, 4, 8)
+        //147
+        this.checkLine(1, 4, 7)
+        //246
+        this.checkLine(2, 4, 6)
+        //258
+        this.checkLine(2, 5, 8)
+        //345
+        this.checkLine(3, 4, 5)
+        //678
+        this.checkLine(6, 7, 8)
     }
 
+    private checkLine(i, j, k) {
+        let [width, height] = [this.scale.width, this.scale.height]
+        let result = this.checker[i] + this.checker[j] + this.checker[k]
+        if (result === 3) {
+            this.add.rectangle(width / 2, height / 2, width, height, 0xffffff, 0.1)
+            this.scene.start(SceneKeys.End, { winner: 'red', move: this.move })
+        } else if (result === -3) {
+            this.add.rectangle(width / 2, height / 2, width, height, 0xffffff, 0.1)
+            this.scene.start(SceneKeys.End, { winner: 'red', move: this.move })
+        }
+    }
 }
+
+
+
 
 
