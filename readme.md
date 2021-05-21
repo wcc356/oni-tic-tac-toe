@@ -5,11 +5,11 @@ Oni Tic Toc Toe
 >##### Framework: Phaser 
 
 Introduction
->---------------
+---------------
 > **Oni(鬼)** in japanese language is like an ogre. 
 > Use your chess(oni) to control the castles! 
 > This is a complicated tic-tac-toe!
-> ---------------
+---------------
 
 ## Rules:
 > There's 3 different sizes of oni, each has 2 chess pieces. 
