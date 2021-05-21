@@ -24,6 +24,7 @@ future target:
 1. introduce the ancient Japanese castle, their location is not located randomly
 2. make the tutorial more exquisite, now I just make a video to demo that, I hope I can just use the code to represent the tutorial
 3. multiple player connecting, I am learning but still not on site
+
 未來預計會:
 1.新增那些日本古城的介紹，我不是亂選的==
 2.會有規則的演示和小提示
