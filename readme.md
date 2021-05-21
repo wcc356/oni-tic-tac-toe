@@ -11,6 +11,7 @@ Rules:
 1. There's 3 different sizes of oni, each has 2 chess pieces. The bigger one can cover the smaller and make the covered can't move
 2. You can move one of your chess on the board in your turn, but can leave the board after enter the board
 3. Just like a tic-tac-toe, winner is the first who make a line (but when you move and try to make a line, the covered chess making the line will faster than you to become the winner)
+
 規則:
 
 1. 有三種大小的棋子各兩個 大的可以蓋住小的，被蓋住的棋子無法移動
