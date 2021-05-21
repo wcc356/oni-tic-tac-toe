@@ -12,15 +12,15 @@ Introduction
 
 
 ## Rules:
-> 1. There's 3 different sizes of oni, each has 2 chess pieces. 
+> There's 3 different sizes of oni, each has 2 chess pieces. 
 >
 > The bigger one can cover the smaller and make the covered can't move
 >
-> 3. You can move one of your chess on the board in your turn, 
+> You can move one of your chess on the board in your turn, 
 >
 > but can leave the board after enter the board
 >
->4.ust like a tic-tac-toe, winner is the first who make a line (but when you move and try to make a line, the covered chess making the line will faster than you to become the winner)
+>ust like a tic-tac-toe, winner is the first who make a line (but when you move and try to make a line, the covered chess making the line will faster than you to become the winner)
 
 ## future target:
 >1. introduce the ancient Japanese castle, their location is not located randomly
