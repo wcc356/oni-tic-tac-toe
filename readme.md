@@ -4,7 +4,7 @@ Language: Typescript
 Framework: Phaser 
 
 Introduction:
-Oni(鬼) in japanese language is like a monster or orc. Use your chess to control the castle!
+Oni(鬼) in japanese language is like a orge or orc. Use your chess to control the castle!
 
 Rules:
 
