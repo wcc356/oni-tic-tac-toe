@@ -1,4 +1,5 @@
-A HTML game with Phaser, now you can play this game at https://wcc356.github.io/oni-tic-tac-...
+A HTML game with Phaser, now you can play this game at 
+https://wcc356.github.io/oni-tic-tac-toe
 
 Language: Typescript  
 Framework: Phaser 
