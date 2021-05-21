@@ -6,7 +6,8 @@ Oni Tic Toc Toe
 
 Introduction
 >---------------
-> **Oni(鬼)** in japanese language is like an ogre. Use your chess(oni) to control the castles! 
+> **Oni(鬼)** in japanese language is like an ogre. 
+> Use your chess(oni) to control the castles! 
 > This is a complicated tic-tac-toe!
 > ---------------
 
