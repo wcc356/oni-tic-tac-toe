@@ -4,12 +4,12 @@ Oni Tic Toc Toe
 >##### Language: Typescript  
 >##### Framework: Phaser 
 
->Introduction
+Introduction
 >---------------
 > **Oni(鬼)** in japanese language is like an ogre. Use your chess(oni) to control the castles! 
 > This is a complicated tic-tac-toe!
 
->## Rules:
+## Rules:
 > There's 3 different sizes of oni, each has 2 chess pieces. 
 >
 > The bigger one can cover the smaller and make the covered can't move
@@ -20,7 +20,7 @@ Oni Tic Toc Toe
 >
 >Just like a tic-tac-toe, winner is the first who make a line (but when you move and try to make a line, the covered chess making the line will faster than you to become the winner)
 
->## future target:
+## future target:
 >1. introduce the ancient Japanese castle, their location is not located randomly
 >
 >2. make the tutorial more exquisite, now I just make a video to demo that, I hope I can just use the code to represent the tutorial
