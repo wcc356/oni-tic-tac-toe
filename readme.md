@@ -45,7 +45,7 @@ Introduction
 >
 > 3.連線對戰
 
-### Credit: Andrew Ku, rexrainbow, OURCADE studio, anyone who helped me
+### Credit: Andrew Ku, rexrainbow, Ourcade studio, anyone who helped me
 ### Image source: いらすとや
 
 The detail about this porject
