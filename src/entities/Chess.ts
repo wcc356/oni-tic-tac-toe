@@ -59,8 +59,8 @@ export default class Chess extends Phaser.GameObjects.Image {
         // drop to the dropzone center
         this.on('drop', (pointer, target: Castle) => {
             // check drop possibility
-            // same position = back and cleartint
-            // less the size = back and cleartint 
+            // same position => back and cleartint
+            // less the size => back and cleartint 
             if (this.castle === target || this.size <= target.size) {
                 this.x = this.input.dragStartX
                 this.y = this.input.dragStartY
@@ -89,7 +89,7 @@ export default class Chess extends Phaser.GameObjects.Image {
             target.sizeArr.unshift(this.size)
             target.size = target.sizeArr[0]
 
-            // change player
+            // change player, only one player can move once time
             for (let chess of scene.chessGroup) {
                 chess.input.draggable = true;
                 chess.clearTint()
@@ -100,7 +100,6 @@ export default class Chess extends Phaser.GameObjects.Image {
             }
 
             scene.move += 1
-
         })
 
         // dropfailed back to start position, clearTint
@@ -114,5 +113,9 @@ export default class Chess extends Phaser.GameObjects.Image {
 
         scene.add.existing(this)
     }
+    create() {
+
+    }
+
 }
 

@@ -7,12 +7,13 @@ export default class Castle extends Phaser.GameObjects.Image {
     private background !: Phaser.GameObjects.Rectangle
     private size: ChessSize
 
-    constructor(scene: Phaser.Scene, x: number, y: number, squareSide: number, castleTexture: CastleTexture) {
+    constructor(scene: Phaser.Scene, x: Number, y: Number, squareSide: Number, castleTexture: CastleTexture) {
         super(scene, x, y, castleTexture)
         this.setDisplaySize(squareSide, squareSide)
         //  make the squaare be the dropzone
         this.setInteractive()
         this.input.dropZone = true
+
 
         // default background = white
         this.background = this.scene.add.rectangle(x, y, squareSide, squareSide, 0xffffff)

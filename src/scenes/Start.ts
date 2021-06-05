@@ -1,12 +1,15 @@
 import Phaser from 'phaser'
-import { SceneKeys } from '~/entities/Enums'
+import { ChessTexture, SceneKeys } from '~/entities/Enums'
 
 export default class Title extends Phaser.Scene {
     constructor() {
         super(SceneKeys.Start)
     }
     create() {
-        const { width, height } = this.scale;
+        const { width, height } = this.scale
+
+        this.add.image(width / 6, height / 2, ChessTexture.WeaponRed).setDisplaySize(width / 4, height / 2)
+        this.add.image(width * (5 / 6), height / 2, ChessTexture.WeaponBlue).setDisplaySize(width / 4, height / 2)
 
         // text: ['Oni！', 'TicTocToe']
         this.add.text(
@@ -35,7 +38,7 @@ export default class Title extends Phaser.Scene {
             .setOrigin(0.5);
 
         this.flashElement(this, press);
-        this.input.once('pointerdown', el => { this.scene.start(SceneKeys.Tutorial) })
+        this.input.once('pointerdown', el => { this.scene.start(SceneKeys.Menu) })
     }
 
     // flash effect

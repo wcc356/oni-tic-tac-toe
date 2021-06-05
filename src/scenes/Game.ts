@@ -1,4 +1,4 @@
-import Phaser, { Scene } from 'phaser'
+import Phaser from 'phaser'
 import Castle from '~/entities/Castle'
 import Chess from '~/entities/Chess'
 import { CastleTexture, ChessTexture, ChessSize, ChessTeam, SceneKeys } from '~/entities/Enums'
@@ -9,7 +9,7 @@ export default class Game extends Phaser.Scene {
     private noWinner: boolean
 
     constructor() {
-        super('game')
+        super(SceneKeys.Game)
         this.move = 0
     }
 
@@ -18,14 +18,15 @@ export default class Game extends Phaser.Scene {
         this.createCastle()
         this.createChess()
         this.winnerCondition()
+        this.backToMenu()
     }
 
     private createCastle() {
-        const width!: number = this.scale.width
-        const height!: number = this.scale.height
-        const squareSide !: number = 120
-        const margin !: number = 10
-        const originPoint !: number = { x: width / 2 - margin - squareSide, y: height / 2 - margin - squareSide }
+        const width!: Number = this.scale.width
+        const height!: Number = this.scale.height
+        const squareSide !: Number = 120
+        const margin !: Number = 10
+        const originPoint !: Number = { x: width / 2 - margin - squareSide, y: height / 2 - margin - squareSide }
 
         // castles[0] castles[1] castles[2]
         // castles[3] castles[4] castles[5]
@@ -93,10 +94,6 @@ export default class Game extends Phaser.Scene {
 
             this.checker[currentCastleIndex] = tmp
             this.check()
-
-
-
-
         }
     }
 
@@ -123,12 +120,18 @@ export default class Game extends Phaser.Scene {
     private sumLine(i, j, k) {
         let result = this.checker[i] + this.checker[j] + this.checker[k]
         if (result === 3) {
-            this.noWinner = false
             this.scene.launch(SceneKeys.End, { winner: 'red', move: this.move })
         } else if (result === -3) {
-            this.noWinner = false
             this.scene.launch(SceneKeys.End, { winner: 'blue', move: this.move })
         }
+    }
+
+    private backToMenu() {
+        const { width, height } = this.scale
+        this.add.rectangle(width - 90, height - 30, 130, 30, 0x000000, 1)
+        const btn = this.add.rectangle(width - 90, height - 30, 130 - 5, 30 - 5, 0xffffff, 1)
+        btn.setInteractive().once('pointerup', () => { this.scene.start(SceneKeys.Menu) })
+        this.add.text(width - 90, height - 30, 'back to menu', { 'color': '0x000000' }).setOrigin(0.5)
     }
 }
 

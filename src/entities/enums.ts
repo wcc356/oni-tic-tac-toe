@@ -3,7 +3,8 @@ export enum SceneKeys {
     Start = 'start',
     Tutorial = 'tutorial',
     Game = 'game',
-    End = 'end'
+    End = 'end',
+    Menu = 'menu'
 }
 
 
@@ -13,7 +14,9 @@ export enum ChessTexture {
     SmallRed = 'Small-Red',
     LargeBlue = 'Large-Blue',
     MediumBlue = 'Medium-Blue',
-    SmallBlue = 'Small-Blue'
+    SmallBlue = 'Small-Blue',
+    WeaponRed = 'Weapon-Red',
+    WeaponBlue = 'Weapon-Blue'
 }
 
 export enum CastleTexture {
