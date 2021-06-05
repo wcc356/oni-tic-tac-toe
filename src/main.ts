@@ -20,7 +20,7 @@ const config: Phaser.Types.Core.GameConfig = {
 		}
 	},
 	backgroundColor: '51cc99'
-	scene: [Preloader, Game, Start, Menu, Tutorial, End]
+	scene: [Preloader, Start, Game, Menu, Tutorial, End]
 }
 
 export default new Phaser.Game(config)

@@ -24,7 +24,7 @@ export default class Preloader extends Phaser.Scene {
         this.revealLogo(1000)
 
         //let logo display several sec, then go to next scene
-        this.time.delayedCall(3500, () => this.scene.start(SceneKeys.Game), [], this)
+        this.time.delayedCall(3500, () => this.scene.start(SceneKeys.Start), [], this)
 
     }
 
